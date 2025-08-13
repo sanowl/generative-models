@@ -1,11 +1,11 @@
 # Adding this at the very top of app.py to make 'generative-models' directory discoverable
 import os
 import sys
+import secrets
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "generative-models"))
 
 import math
-import random
 import uuid
 from glob import glob
 from pathlib import Path
@@ -90,7 +90,7 @@ def sample(
     """
     fps_id = int(fps_id)  # casting float slider values to int)
     if randomize_seed:
-        seed = random.randint(0, max_64_bit_int)
+        seed = secrets.SystemRandom().randint(0, max_64_bit_int)
 
     torch.manual_seed(seed)
 
